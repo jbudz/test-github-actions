@@ -12,4 +12,6 @@ jobs:
       github.event.action == 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'test')
     steps:
       - name: Test
-        run: echo 'test'
+        run: |
+          echo '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+          echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
