@@ -1,0 +1,15 @@
+on:
+  pull_request:
+    types:
+      - unlabeled
+      - labeled
+
+jobs:
+  label:
+    name: label
+    runs-on: ubuntu-latest
+    if: |
+      github.event.action == 'unlabeled' && github.event.unlabel.name = 'test'
+    steps:
+      - name: Test
+        run: echo 'test'
