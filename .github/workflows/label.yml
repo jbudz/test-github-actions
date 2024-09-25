@@ -9,7 +9,7 @@ jobs:
     name: label
     runs-on: ubuntu-latest
     if: |
-      github.event.action == 'unlabeled' && github.event.unlabel.name == 'test'
+      github.event.action == 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'test')
     steps:
       - name: Test
         run: echo 'test'
